@@ -36,7 +36,7 @@ Here is where we set up our workspace for **Snake**. We call `begin()` so that i
         begin()
         update()
         //add user input
-        for direction : UISwipeGestureRecognizerDirection in [.left, .right, .up, .down] {
+        for direction : UISwipeGestureRecognizer.Direction in [.left, .right, .up, .down] {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
             gesture.direction = direction
             board.addGestureRecognizer(gesture)
@@ -52,13 +52,13 @@ Here is where we set up our workspace for **Snake**. We call `begin()` so that i
             return
         }
         switch recognizer.direction {
-        case UISwipeGestureRecognizerDirection.right:
+        case UISwipeGestureRecognizer.Direction.right:
             direction = 0
-        case UISwipeGestureRecognizerDirection.left:
+        case UISwipeGestureRecognizer.Direction.left:
             direction = 1
-        case UISwipeGestureRecognizerDirection.up:
+        case UISwipeGestureRecognizer.Direction.up:
             direction = 2
-        case UISwipeGestureRecognizerDirection.down:
+        case UISwipeGestureRecognizer.Direction.down:
             direction = 3
         default:
             break

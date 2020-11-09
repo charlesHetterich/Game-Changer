@@ -78,7 +78,7 @@ Our set up here is similar to how we did our setup in **Snake**. We call `begin(
         update()
         
         //add user input
-        for direction : UISwipeGestureRecognizerDirection in [.left, .right, .up, .down] {
+        for direction : UISwipeGestureRecognizer.Direction in [.left, .right, .up, .down] {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
             gesture.direction = direction
             board.addGestureRecognizer(gesture)
@@ -89,18 +89,18 @@ Our set up here is similar to how we did our setup in **Snake**. We call `begin(
         fatalError("init(coder:) has not been implemented")
     }
 //: > Unlike **Snake**, we redraw after recieving an input because this input effects a seperate movement than the movement that happens in the update function, and because of that we want the user to be able to see the change they made right away.
-    func swipe(recognizer:UIGestureRecognizer?) {
+    @objc func swipe(recognizer:UIGestureRecognizer?) {
         guard let recognizer = recognizer as? UISwipeGestureRecognizer else {
             return
         }
         switch recognizer.direction {
-        case UISwipeGestureRecognizerDirection.right:
+        case UISwipeGestureRecognizer.Direction.right:
             move(rightBy: 1)
-        case UISwipeGestureRecognizerDirection.left:
+        case UISwipeGestureRecognizer.Direction.left:
             move(rightBy: -1)
-        case UISwipeGestureRecognizerDirection.up:
+        case UISwipeGestureRecognizer.Direction.up:
             rotate(clockwiseBy: 270)
-        case UISwipeGestureRecognizerDirection.down:
+        case UISwipeGestureRecognizer.Direction.down:
             rotate(clockwiseBy: 90)
         default:
             break
